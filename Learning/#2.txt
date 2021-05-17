@@ -1,0 +1,26 @@
+# npx 설치
+npm i -g npx
+
+# create-react-app 사용하여 프로젝트 설치
+npx create-react-app [PRJ_NAME]
+
+# fragments
+render() {
+	return <></>
+}
+
+# .env 설정이 안되는 경우
+2020.11.02 자 팁입니다.
+import App from "Components/App";
+=> NODE_PATH를 설정해도 에러: 원인은 아래 링크에서 볼 수 있듯
+NODE_PATH 자체가 deprecated 됨
+
+https://github.com/facebook/create-react-app/blob/master/CHANGELOG.md#removed-typescript-flag-and-node_path-support
+
+해결방법은 package.json과 같은 경로에 jsconfig.json 파일을 만들고 거기에서 관리하길 강제(ㅜㅜ)
+=> jsconfig.json 파일 만들고 코드 삽입
+{
+"compilerOptions": {
+"baseUrl": "src"
+}
+
