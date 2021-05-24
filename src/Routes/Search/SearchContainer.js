@@ -17,9 +17,9 @@ export default class extends React.Component {
     state = {
         movieResults: null,
         tvResults: null,
-        searchTerm: "",
         error: null,
-        loading: false
+        loading: false,
+        searchTerm: ""
     }
 
     // #5.4 현재 handleSubmit 할 수 있는 조건이 없으므로 강제 실행 (시뮬레이션)
@@ -28,11 +28,24 @@ export default class extends React.Component {
     // }
 
     // handleSumbit : 누군가가 button click 했을 경우, 검색어 입력
-    handleSubmit = () => {
+    handleSubmit = (event) => {
+        // preventDefault(): Form Event를 동작하지 못하게 만든다
+        event.preventDefault()
         const { searchTerm } = this.state
         if (searchTerm !== "") {
             this.searchByTerm(searchTerm)
         }
+    }
+
+    // updateTerm: 
+    updateTerm = (event) => {
+        const { 
+            target: {value} 
+        } = event
+        this.setState({
+            searchTerm:value
+        })
+        
     }
 
     searchByTerm = async () => {
@@ -61,8 +74,6 @@ export default class extends React.Component {
     render() {
         const { movieResults, tvResults, searchTerm, error, loading } = this.state
 
-        console.log(this.state)
-
         return (
             <SearchPresenter
                 movieResults={movieResults}
@@ -71,6 +82,7 @@ export default class extends React.Component {
                 error={error}
                 loading={loading}
                 handleSubmit={this.handleSubmit}
+                updateTerm={this.updateTerm}
             />
         )
     }

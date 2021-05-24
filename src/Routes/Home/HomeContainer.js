@@ -62,7 +62,6 @@ export default class extends React.Component {
 
     render() {
         const { nowPlaying, upcoming, popular, error, loading } = this.state
-        console.log(this.state)
         return (
             <HomePresenter 
                 nowPlaying={nowPlaying}
@@ -74,3 +73,24 @@ export default class extends React.Component {
         )
     }
 }
+
+/**
+ * PropTypes의 종류
+ * 
+ * array: 배열
+ * arrayOf: 특정 PropType으로 이루어진 배열
+ * bool: 논리 (true OR false)
+ * func: 함수
+ * number: 숫자
+ * object: 객체
+ * string: 문자열
+ * symbol: ES6의 Symbol
+ * node: Rendering 가능한 모든 것(숫자, 문자열, JSX)
+ * instanceOf: 특정 클래스의 인스턴스 (ex: instanceOf(Class))
+ * oneOf(['dog', 'cat']): 주어진 배열 요소 중 하나
+ * oneOfType([React.PropTypes.string, PropTypes.number]): 주어진 배열 안의 타입 중 하나
+ * objectOf(React.PropTypes.number): 객체의 모든 키 값이 인자로 주어진 PropType인 객체
+ * shape({ name: PropTypes.string, num: PropTypes.number }): 주어진 스키마를 가진 객체
+ * any: 아무것이나
+ * 
+ */
